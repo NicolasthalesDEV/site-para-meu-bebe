@@ -97,7 +97,7 @@ export default function MusicPlayer() {
   }, [])
 
   return (
-    <div className="fixed top-4 right-4 z-20">
+    <div className="w-full max-w-sm">
       <div className="bg-white/90 backdrop-blur-sm border border-rose-200 rounded-lg shadow-lg overflow-hidden">
         {/* Header sempre visível */}
         <div
@@ -106,7 +106,7 @@ export default function MusicPlayer() {
         >
           <div className="flex items-center gap-2">
             <Music className="w-4 h-4 text-rose-600" />
-            <span className="text-sm font-medium text-rose-800 font-dancing hidden sm:inline">Música</span>
+            <span className="text-sm font-medium text-rose-800 font-dancing">Música</span>
           </div>
           {isExpanded ? (
             <ChevronUp className="w-4 h-4 text-rose-600" />

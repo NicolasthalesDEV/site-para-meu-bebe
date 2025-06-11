@@ -15,7 +15,10 @@ export default function Home() {
       <BackgroundAnimation />
 
       <div className="relative z-10 container mx-auto px-4 py-8">
-        <MusicPlayer />
+        {/* Espaço dedicado para o player */}
+        <div className="flex justify-end mb-4">
+          <MusicPlayer />
+        </div>
 
         <div className="max-w-4xl mx-auto">
           <Letter

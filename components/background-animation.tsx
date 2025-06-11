@@ -20,7 +20,7 @@ export default function BackgroundAnimation() {
         newHearts.push({
           id: i,
           left: Math.random() * 100,
-          top: Math.random() * 100, // Distribui verticalmente
+          top: Math.random() * 100,
           animationDuration: 8 + Math.random() * 6,
           size: 36 + Math.random() * 24,
         })
@@ -32,7 +32,7 @@ export default function BackgroundAnimation() {
   }, [])
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {hearts.map((heart) => (
         <div
           key={heart.id}
