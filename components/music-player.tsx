@@ -96,7 +96,7 @@ export default function MusicPlayer() {
   }, [])
 
   return (
-    <div className="fixed top-4 right-4 z-20">
+    <div className="fixed top-20 md:top-4 right-4 z-20">
       <div className="bg-white/90 backdrop-blur-sm border border-rose-200 rounded-lg shadow-lg p-3">
         <div className="flex items-center gap-2 mb-2">
           <Music className="w-4 h-4 text-rose-600" />
