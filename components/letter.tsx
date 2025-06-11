@@ -17,7 +17,7 @@ export default function Letter({ onComplete, onShowSurprise, letterComplete }: L
 
   const letterText = `Meu amor,
 
-Como a música diz: “Tudo que eu vivi foi um sonho, um grande sonho eu sonhei”... E aí você apareceu e transformou esse sonho em realidade.
+Como a música diz: "Tudo que eu vivi foi um sonho, um grande sonho eu sonhei"... E aí você apareceu e transformou esse sonho em realidade.
 
 Desde que a gente começou a conversar e fomos pela primeira vez ao shopping, eu senti que tinha algo diferente. Naquele momento, eu soube: você era o meu novo mundo. Seu sorriso tem o poder de iluminar qualquer dia ruim. Sua risada é a melhor trilha sonora que já ouvi. E o seu amor... é o melhor presente que a vida me deu.
 
@@ -32,7 +32,7 @@ Que esse seja só mais um de muitos Dias dos Namorados que ainda vamos viver jun
 Com todo o meu amor,
 Neni ❤️
 
-P.S.: “Meu novo mundo” é você. 🎵`
+P.S.: "Meu novo mundo" é você. 🎵`
 
   useEffect(() => {
     if (currentIndex < letterText.length) {
@@ -50,22 +50,22 @@ P.S.: “Meu novo mundo” é você. 🎵`
 
   return (
     <div className="text-center mb-8">
-      <h1 className="text-4xl md:text-6xl font-bold text-rose-600 mb-8 font-dancing animate-fade-in">
+      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-rose-600 mb-6 sm:mb-8 font-dancing animate-fade-in px-4">
         Para Você, Meu Novo Mundo
       </h1>
 
       <Card className="bg-white/80 backdrop-blur-sm shadow-2xl border-rose-200 max-w-3xl mx-auto">
-        <CardContent className="p-8 md:p-12">
-          <div className="text-gray-700 text-lg md:text-xl leading-relaxed font-dancing whitespace-pre-line text-left">
+        <CardContent className="p-6 sm:p-8 md:p-12">
+          <div className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed font-dancing whitespace-pre-line text-left">
             {displayedText}
             {isTyping && <span className="animate-pulse">|</span>}
           </div>
 
           {letterComplete && (
-            <div className="mt-8 text-center animate-fade-in">
+            <div className="mt-6 sm:mt-8 text-center animate-fade-in">
               <Button
                 onClick={onShowSurprise}
-                className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
               >
                 ✨ Clique para uma Surpresa ✨
               </Button>

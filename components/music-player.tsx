@@ -106,7 +106,7 @@ export default function MusicPlayer() {
         >
           <div className="flex items-center gap-2">
             <Music className="w-4 h-4 text-rose-600" />
-            <span className="text-sm font-medium text-rose-800 font-dancing">Música</span>
+            <span className="text-sm font-medium text-rose-800 font-dancing">Nossa Música ❤️✨</span>
           </div>
           {isExpanded ? (
             <ChevronUp className="w-4 h-4 text-rose-600" />
