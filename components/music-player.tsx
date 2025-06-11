@@ -2,12 +2,13 @@
 
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Play, Pause, Volume2, Music } from "lucide-react"
+import { Play, Pause, Volume2, Music, ChevronDown, ChevronUp } from "lucide-react"
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setHasError] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
   const playPromiseRef = useRef<Promise<void> | null>(null)
 
@@ -96,38 +97,62 @@ export default function MusicPlayer() {
   }, [])
 
   return (
-    <div className="fixed top-20 md:top-4 right-4 z-20">
-      <div className="bg-white/90 backdrop-blur-sm border border-rose-200 rounded-lg shadow-lg p-3">
-        <div className="flex items-center gap-2 mb-2">
-          <Music className="w-4 h-4 text-rose-600" />
-          <span className="text-sm font-medium text-rose-800 font-dancing">Meu Novo Mundo - CBJ</span>
+    <div className="fixed top-4 right-4 z-20">
+      <div className="bg-white/90 backdrop-blur-sm border border-rose-200 rounded-lg shadow-lg overflow-hidden">
+        {/* Header sempre visível */}
+        <div
+          className="flex items-center justify-between p-3 cursor-pointer hover:bg-rose-50/50 transition-colors"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <div className="flex items-center gap-2">
+            <Music className="w-4 h-4 text-rose-600" />
+            <span className="text-sm font-medium text-rose-800 font-dancing hidden sm:inline">Música</span>
+          </div>
+          {isExpanded ? (
+            <ChevronUp className="w-4 h-4 text-rose-600" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-rose-600" />
+          )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <Button
-            onClick={togglePlay}
-            variant="outline"
-            size="sm"
-            disabled={isLoading}
-            className={`
-              ${hasError ? "border-red-300 text-red-600" : "border-rose-300 text-rose-600"}
-              hover:bg-rose-50 shadow-sm disabled:opacity-50 transition-all duration-200
-            `}
-          >
-            {isLoading ? (
-              <div className="w-4 h-4 mr-2 animate-spin rounded-full border-2 border-rose-300 border-t-rose-600" />
-            ) : isPlaying ? (
-              <Pause className="w-4 h-4 mr-2" />
-            ) : (
-              <Play className="w-4 h-4 mr-2" />
-            )}
-            {hasError ? "Erro" : isPlaying ? "Pausar" : "Tocar"}
-          </Button>
+        {/* Conteúdo expansível */}
+        <div
+          className={`transition-all duration-300 ease-in-out ${
+            isExpanded ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+          } overflow-hidden`}
+        >
+          <div className="px-3 pb-3 border-t border-rose-200/50">
+            <div className="flex items-center gap-2 mb-3 mt-2">
+              <span className="text-sm font-medium text-rose-800 font-dancing">Meu Novo Mundo - CBJ</span>
+            </div>
 
-          <Volume2 className="w-4 h-4 text-rose-600" />
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={togglePlay}
+                variant="outline"
+                size="sm"
+                disabled={isLoading}
+                className={`
+                  ${hasError ? "border-red-300 text-red-600" : "border-rose-300 text-rose-600"}
+                  hover:bg-rose-50 shadow-sm disabled:opacity-50 transition-all duration-200
+                `}
+              >
+                {isLoading ? (
+                  <div className="w-4 h-4 mr-2 animate-spin rounded-full border-2 border-rose-300 border-t-rose-600" />
+                ) : isPlaying ? (
+                  <Pause className="w-4 h-4 mr-2" />
+                ) : (
+                  <Play className="w-4 h-4 mr-2" />
+                )}
+                {hasError ? "Erro" : isPlaying ? "Pausar" : "Tocar"}
+              </Button>
+
+              <Volume2 className="w-4 h-4 text-rose-600" />
+            </div>
+
+            {hasError && <p className="text-xs text-red-500 mt-2">Adicione o arquivo na pasta public/</p>}
+          </div>
         </div>
-
-        {hasError && <p className="text-xs text-red-500 mt-1">Adicione o arquivo na pasta public/</p>}
       </div>
 
       <audio ref={audioRef} loop preload="metadata">
